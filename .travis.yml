@@ -5,6 +5,9 @@ os: osx
 
 # Set BINSTAR_TOKEN
 env:
+    matrix:
+        - CONFIG=osx_py36
+        - CONFIG=osx_py37
     global:
         secure: "R6r0F5rFFV5DXR86rGTbevg4nXzN/IGE2lppjVnUOB5oTjbn2vlA3t1ZylCa5QxK1D58eh/b0xVYa1yD9tJasspno3gwaMhNVGA+o2csveleYBieW8I7AV+ds2fsNh/5ojUTolcZ2TyxqXOkHuYLy/pQZc/MAgXbWEwdqwvfyxV7Sfs3DWdDPJ4ynxfQVRQpDZWot/IOijlR1UbVur631fwvYe6+7paR42cQkKlW3dE7o0NarZI5g/TwflnWx6rs5sl5x/AVgyUDSZXUjsfx4Xn8mBPTAAnss0rpqKnZ3rOqvNpuKKi5mwdYDaIW0Q2KvdvB9XpcN+PNq87kFOgijMUyXhzOCb5JB2j5+gqrTkXWXzWrBmWvFJqcLeg99lAS9dPL/4cNPYdTfr1AI7RfaFnmR37c6cipmXmFwkNNCJ0+8GmkzkuS//g+VzrZoIRDf2xuUXgSfH0HomljKXAUFuDLTj8EqSHt36dE6UbhZve0t7rKYe9k00PPdd9v6brbxQ7+CLRAlMt0db84dqGqHr6KBgSFUQSyZtd/Z7PcshAm+ijfrk4JI5Mtq4rXQhMv4p+no7lMXu6V2VzibyZ1I+k3JgDaxZVK+8b+1qUtO8f8PKbGicEkzCuwCaEgIwCWNx22EOJGKzz2BZMvJoCpPj+3N9qbJo8aXK+GZzFtO9M="
 
@@ -25,6 +28,6 @@ install:
 
 script:
     - source ~/miniconda/bin/activate base
-    - conda build ./recipe
+    - conda build -m build_config/${CONFIG}.yaml ./recipe
     # from https://github.com/conda-forge/conda-forge-build-setup-feedstock/blob/master/recipe/upload_or_check_non_existence.py
-    - ./upload_or_check_non_existence ./recipe sebp --channel=main
+    - ./upload_or_check_non_existence -m build_config/${CONFIG}.yaml ./recipe sebp --channel=main
