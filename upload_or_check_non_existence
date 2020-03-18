@@ -45,7 +45,7 @@ def built_distribution_already_exists(cli, meta, fname, owner):
     return exists
 
 
-def upload(token_fn, fname, meta, owner, channels):
+def upload(token_fn, fname, owner, channels):
     subprocess.check_call(['anaconda', '-t', token_fn,
                            'upload', fname,
                            '--user={}'.format(owner),
