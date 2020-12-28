@@ -1,4 +1,6 @@
 python:
-    - 3.6
+    - '3.6'
 numpy:
-    - 1.14
+    - '1.16'
+target_platform:
+    - linux-64

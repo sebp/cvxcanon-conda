@@ -1,6 +1,6 @@
 {% set name = "CVXcanon" %}
-{% set version = "0.1.1" %}
-{% set md5sum = "433a38b55058c5ec1a156a75a7d7308e" %}
+{% set version = "0.1.2" %}
+{% set sha256sum = "d6edadd6cb543a08c16a36e39293a0e6b9091447ecc91d1728fe07898711af51" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  md5: {{ md5sum }}
+  sha256: {{ sha256sum }}
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -28,7 +28,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 7
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
